@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Agregar Prestamo</h1>
+
+    {% if mensaje_error %}
+        <p style="color: red;">{{ mensaje_error }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Guardar">
+    </form>
+
+    <a href="{% url 'listar_prestamos' %}">Volver al listado</a>
+{% endblock %}

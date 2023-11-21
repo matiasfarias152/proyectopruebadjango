@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Detalle del Cliente</h1>
+
+    <p><strong>Nombre: </strong> {{ cliente.nombre }}</p>
+    <p><strong>RUT: </strong> {{ cliente.rut }}</p>
+    <p><strong>Correo: </strong>{{ cliente.correo }}</p>
+    <p><strong>Telefono: </strong>{{ cliente.telefono }}</p>
+    <p><strong>Direccion: </strong>{{ cliente.direccion }}</p>
+    <p><strong>Multas: </strong>{{ cliente.multas }}</p>
+
+    <a href="{% url 'modificar_cliente' cliente.id %}">Editar</a>
+    <a href="{% url 'eliminar_cliente' cliente.id %}">Eliminar</a>
+    <a href="{% url 'listar_clientes' %}">Volver al listado</a>
+{% endblock %}
