@@ -1,12 +1,12 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.documentation import include_docs_urls
+from rest_framework import routers
+from biblioteca import views 
 
+router = routers.DefaultRouter()
+router.register(r'libros', views.LibroView, 'Libros')
 
 
 urlpatterns = [
-    path('libros/', views.listar_libros, name='listar_libros'),
-    path('libros/agregar/', views.agregar_libro, name='agregar_libro'),
-    path('libros/<int:libro_id>/', views.detalle_libro, name='detalle_libro'),
-    path('libros/<int:libro_id>/editar/', views.modificar_libro, name='modificar_libro'),
-    path('libros/<int:libro_id>/eliminar/', views.eliminar_libro, name='eliminar_libro'),
+    path('api/v1/', include(router.urls)),
 ]

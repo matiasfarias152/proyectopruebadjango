@@ -1,10 +1,11 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework import routers
+from clientes import views 
+
+router = routers.DefaultRouter()
+router.register(r'clientes', views.ClienteView, 'Clientes')
+
 
 urlpatterns = [
-    path('', views.listar_clientes, name='listar_clientes'),
-    path('agregar/',views.agregar_cliente, name='agregar_cliente'),
-    path('<int:cliente_id>/',views.detalle_cliente,name='detalle_cliente'),
-    path('<int:cliente_id>/modificar/',views.modificar_cliente, name='modificar_cliente'),
-    path('<int:cliente_id>/eliminar/',views.eliminar_cliente, name='eliminar_cliente'),
+    path('api/v1/', include(router.urls)),
 ]
